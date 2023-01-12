@@ -5,6 +5,6 @@
     <select id="getDailyConsumptionList" parameterType="int" resultType="com.umc.accountbook.domain.Expenditure">
         SELECT *
         FROM EXPENDITURE
-        WHERE dc_id = #{dc_id}
+        WHERE dc_id = ${dc_id}
     </select>
 </mapper>

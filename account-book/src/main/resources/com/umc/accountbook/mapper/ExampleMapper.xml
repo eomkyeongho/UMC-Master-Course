@@ -7,4 +7,10 @@
         FROM EXAMPLETABLE
         WHERE ex_id = #{id}
     </select>
+
+    <select id="getEssentialSpendingList" parameterType="int" resultType="com.umc.accountbook.domain.EssentialSpending">
+        select * from
+        essential_spending
+        where goal_id = #{goal_id}
+    </select>
 </mapper>

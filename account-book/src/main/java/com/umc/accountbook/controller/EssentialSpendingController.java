@@ -16,7 +16,7 @@ public class EssentialSpendingController {
     private final EssentialSpendingService essentialSpendingService;
 
     @GetMapping("essential/{es_id}")
-    public EssentialSpending essentialSpending(@PathVariable int es_id){
+    public EssentialSpending essentialSpendingAPI(@PathVariable int es_id){
         EssentialSpending es = essentialSpendingService.getEssentialSpending(es_id);
         return es;
     }

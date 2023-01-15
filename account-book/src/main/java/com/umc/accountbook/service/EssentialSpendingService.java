@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class EssentialSpendingService {
+
     private final EssentialSpendingMapper essentialSpendingMapper;
 
     public EssentialSpending getEssentialSpending(int es_id) {

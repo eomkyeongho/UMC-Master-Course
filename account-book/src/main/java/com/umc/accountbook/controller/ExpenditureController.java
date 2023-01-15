@@ -14,11 +14,11 @@ import java.util.List;
 public class ExpenditureController {
     private final ExpenditureService expenditureService;
 
-    @GetMapping("/dailyComsumption/{dc_id}")
-    public List<Expenditure> getDailyConsumptionList(@PathVariable int dc_id) {
-        List<Expenditure> dailyConsumptionList = expenditureService.getDailyConsumptionList(dc_id);
+    @GetMapping("/expenditures/{dc_id}")
+    public List<Expenditure> getExpenditures(@PathVariable int dc_id) {
+        List<Expenditure> expenditureList = expenditureService.getExpenditures(dc_id);
 
-        return dailyConsumptionList;
+        return expenditureList;
     }
 
     @GetMapping("/example")

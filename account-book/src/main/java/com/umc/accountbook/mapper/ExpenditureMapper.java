@@ -7,7 +7,6 @@ import java.util.List;
 
 @Mapper
 public interface ExpenditureMapper {
-    List<Expenditure> getDailyConsumptionList(int dc_id);
-
     void createDailyExpenditure(Expenditure expenditure);
+    List<Expenditure> getExpenditures(int dc_id);
 }

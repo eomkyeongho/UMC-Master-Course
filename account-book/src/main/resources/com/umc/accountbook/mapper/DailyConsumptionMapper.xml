@@ -6,6 +6,6 @@
         select * from
             daily_consumption
         where user_id = #{user_id}
-          and date = #{date}
+        and date = #{date}
     </select>
 </mapper>

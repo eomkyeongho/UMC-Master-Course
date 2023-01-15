@@ -7,4 +7,10 @@
         FROM EXPENDITURE
         WHERE dc_id = ${dc_id}
     </select>
+
+    <insert id="createDailyExpenditure" parameterType="com.umc.accountbook.domain.Expenditure">
+        INSERT INTO
+        EXPENDITURE(DC_ID, ICON, CONTENT, COST, MEMO)
+        VALUES(#{dc_id}, #{icon}, #{content}, #{cost}, #{memo})
+    </insert>
 </mapper>

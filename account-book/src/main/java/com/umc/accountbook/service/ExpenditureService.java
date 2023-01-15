@@ -15,4 +15,8 @@ public class ExpenditureService {
     public List<Expenditure> getExpenditures(int dc_id) {
         return expenditureMapper.getExpenditures(dc_id);
     }
+
+    public void createDailyExpenditure(Expenditure expenditure) {
+        expenditureMapper.createDailyExpenditure(expenditure);
+    }
 }

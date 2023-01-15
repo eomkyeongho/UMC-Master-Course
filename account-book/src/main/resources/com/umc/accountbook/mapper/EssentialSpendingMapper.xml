@@ -5,6 +5,6 @@
     <select id="getEssentialSpending" parameterType="int" resultType="com.umc.accountbook.domain.EssentialSpending">
         select * from
         essential_spending
-        where es_id = #{es_id}
+        where goal_id = #{goal_id}
     </select>
 </mapper>

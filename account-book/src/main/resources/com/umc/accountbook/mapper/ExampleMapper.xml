@@ -4,7 +4,13 @@
 <mapper namespace = "com.umc.accountbook.mapper.ExampleMapper">
     <select id="getExampleDomain" parameterType="Long" resultType="com.umc.accountbook.domain.ExampleDomain">
         SELECT ex_id, ex_name
-        FROM EXAMPLETABLE
+        FROM ex_table
         WHERE ex_id = #{id}
+    </select>
+
+    <select id="getEssentialSpending" parameterType="int" resultType="com.umc.accountbook.domain.EssentialSpending">
+        select * from
+        essential_spending
+        where es_id = #{es_id}
     </select>
 </mapper>

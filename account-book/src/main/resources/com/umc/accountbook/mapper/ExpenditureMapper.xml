@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.umc.accountbook.mapper.ExpenditureMapper">
-    <select id="getDailyConsumptionList" parameterType="int" resultType="com.umc.accountbook.domain.Expenditure">
+    <select id="getExpenditures" parameterType="int" resultType="com.umc.accountbook.domain.Expenditure">
         SELECT *
         FROM EXPENDITURE
         WHERE dc_id = ${dc_id}
     </select>
+
+    <insert id="createDailyExpenditure" parameterType="com.umc.accountbook.domain.Expenditure">
+        INSERT INTO
+        EXPENDITURE(DC_ID, ICON, CONTENT, COST, MEMO)
+        VALUES(#{dc_id}, #{icon}, #{content}, #{cost}, #{memo})
+    </insert>
 </mapper>

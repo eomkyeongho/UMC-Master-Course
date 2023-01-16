@@ -12,7 +12,11 @@ import java.util.List;
 public class ExpenditureService {
     private final ExpenditureMapper expenditureMapper;
 
-    public List<Expenditure> getDailyConsumptionList(int dc_id) {
-        return expenditureMapper.getDailyConsumptionList(dc_id);
+    public List<Expenditure> getExpenditures(int dc_id) {
+        return expenditureMapper.getExpenditures(dc_id);
+    }
+
+    public void createDailyExpenditure(Expenditure expenditure) {
+        expenditureMapper.createDailyExpenditure(expenditure);
     }
 }

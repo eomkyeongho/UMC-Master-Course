@@ -11,4 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("goal")
 public class GoalController {
     private final GoalService goalService;
+
 }
+//일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

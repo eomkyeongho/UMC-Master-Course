@@ -30,7 +30,7 @@ public class DailyConsumptionController {
     }
     
     @GetMapping("daily-consumption/{user_id}")
-    public DailyConsumption getDailyConsumption(@PathVariable int user_id){
+    public DailyConsumption getDailyConsumption(@PathVariable long user_id){
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         //test용

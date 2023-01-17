@@ -9,7 +9,7 @@ import java.util.Date;
 @Setter
 public class Goal {
     private int goal_id;
-    private Long user_id;
+    private int user_id;
     private Long icon;
     private Long target_amount;
     private Date period_start;

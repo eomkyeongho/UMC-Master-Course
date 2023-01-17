@@ -9,7 +9,7 @@ import java.util.Date;
 @Setter
 public class DailyConsumption {
     private int dc_id;
-    private int user_id;
+    private long user_id;
     private Long avail_spending;
     private Long spending;
     private Date date;

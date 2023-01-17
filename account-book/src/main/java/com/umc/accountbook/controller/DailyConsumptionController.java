@@ -15,12 +15,12 @@ import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
-//@RequestMapping("daily-consumption")
+@RequestMapping("daily-consumption")
 public class DailyConsumptionController {
 
     private final DailyConsumptionService dailyConsumptionService;
 
-    @GetMapping("daily-consumption/{user_id}")
+    @GetMapping("/{user_id}")
     public DailyConsumption getDailyConsumption(@PathVariable int user_id){
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());

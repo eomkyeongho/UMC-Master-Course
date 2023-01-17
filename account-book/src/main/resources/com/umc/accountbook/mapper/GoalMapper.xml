@@ -2,4 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.umc.accountbook.mapper.GoalMapper">
+    <select id="getDailyAvailAmount" parameterType="hashmap" resultType="Long">
+        select DAILY_AVAIL_AMOUNT
+        from goal
+        where goal_id = #{goal_id} and user_id = #{user_id}
+    </select>
 </mapper>

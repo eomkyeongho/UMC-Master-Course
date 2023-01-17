@@ -14,11 +14,11 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-//@RequestMapping("essential-consumption")
+@RequestMapping("essential-consumption")
 public class EssentialSpendingController {
     private final EssentialSpendingService essentialSpendingService;
 
-    @GetMapping("/essential/{goal_id}")
+    @GetMapping("/{goal_id}")
     public List<EssentialSpending> getEssenailSpending(@PathVariable int goal_id) {
         List<EssentialSpending> essentialSpendingList = essentialSpendingService.getEssentialSpending(goal_id);
 

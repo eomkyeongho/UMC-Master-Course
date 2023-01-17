@@ -19,7 +19,7 @@ import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
-//@RequestMapping("daily-consumption")
+@RequestMapping("daily-consumption")
 public class DailyConsumptionController {
 
     private final DailyConsumptionService dailyConsumptionService;

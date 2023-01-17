@@ -7,4 +7,9 @@
         from goal
         where goal_id = #{goal_id} and user_id = #{user_id}
     </select>
+    <select id="getRestAmount" parameterType="hashmap" resultType="Long">
+        select rest_amount
+        from goal
+        where goal_id = #{goal_id} and user_id = #{user_id}
+    </select>
 </mapper>

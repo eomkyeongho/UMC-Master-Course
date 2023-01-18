@@ -8,4 +8,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GoalService {
     private final GoalMapper goalMapper;
+
+
+    public Long getDailyAvailAmount(int goal_id, int user_id) {
+        return goalMapper.getDailyAvailAmount(goal_id, user_id);
+    }
+    public Long getRestAmount(int goal_id, int user_id) {
+        return goalMapper.getRestAmount(goal_id, user_id);
+    }
 }

@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.lang.String;
+import java.lang.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,10 +25,11 @@ public class DailyConsumptionController {
     private final DailyConsumptionService dailyConsumptionService;
 
     @GetMapping ("/check")
-    public ResponseEntity<String> checkTodaySuccess(@RequestParam String date){
-        return ResponseEntity.ok(date);
+    public ResponseEntity<String> getTodaySuccess(@RequestParam String id, @RequestParam String date){
+        return ResponseEntity.ok(dailyConsumptionService.getTodaySuccess(id, date));
     }
-    
+    //http://url/check?id=1&date=2023-01-01
+
     @GetMapping("daily-consumption/{user_id}")
     public DailyConsumption getDailyConsumption(@PathVariable long user_id){
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");

@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface DailyConsumptionMapper {
     void checkTodaySuccess (DailyConsumption dailyConsumption);
-    List<DailyConsumption> getDailyConsumption(int user_id);
+    List<DailyConsumption> getTodaySuccess(String user_id, String date);
 
     DailyConsumption getDailyConsumption(String user_id, String date);
 }

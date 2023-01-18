@@ -4,8 +4,17 @@
 <mapper namespace="com.umc.accountbook.mapper.DailyConsumptionMapper">
     <select id="getDailyConsumption" parameterType="String" resultType="com.umc.accountbook.domain.DailyConsumption">
         select * from
-            daily_consumption
+            history
         where user_id = #{user_id}
         and date = #{date}
     </select>
+    <select id="getTodaySuccess" parameterType="String" resultType="com.umc.accountbook.domain.DailyConsumption">
+        select * from
+            history
+        where user_id = #{user_id}
+          and date = #{date}
+            and history.DAILY_AVAIL_AMOUNT - history.SPENDING <![CDATA[<]]> 0
+    </select>
+
+
 </mapper>

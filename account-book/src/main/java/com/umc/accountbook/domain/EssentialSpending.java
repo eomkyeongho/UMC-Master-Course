@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EssentialSpending {
-    private int es_id;
+    private int essential_spending_id;
     private int goal_id;
     private Long icon;
     private String content;

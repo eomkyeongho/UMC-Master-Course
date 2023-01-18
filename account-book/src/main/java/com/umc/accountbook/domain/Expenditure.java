@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Expenditure {
-    private int exp_id;
-    private int dc_id;
+    private int expenditure_id;
+    private int history_id;
     private Long icon;
     private String content;
     private Long cost;

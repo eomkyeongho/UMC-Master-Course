@@ -16,6 +16,6 @@ public class Goal {
     private Date period_end;
     private String memo;
     private Long monthly_income;
-    private Long daily_avail_spending;
-    private Long rest_money;
+    private Long daily_avail_amount;
+    private Long rest_amount;
 }

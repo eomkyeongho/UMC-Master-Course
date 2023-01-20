@@ -21,11 +21,6 @@ public class ExpenditureController {
         return expenditureList;
     }
 
-    @GetMapping("/example")
-    public String example1() {
-        return "This is example";
-    }
-
     @PostMapping("")
     public String createDailyExpenditure(@RequestBody Expenditure expenditure) {
         expenditureService.createDailyExpenditure(expenditure);

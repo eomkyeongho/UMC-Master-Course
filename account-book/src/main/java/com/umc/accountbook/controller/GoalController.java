@@ -24,8 +24,8 @@ public class GoalController {
   }
     
     @GetMapping("/rest-amount")
-    public Long getRestAmount(@RequestParam int goal_id, @RequestParam int user_id) {
-        return goalService.getRestAmount(goal_id, user_id);
+    public Long getRestAmount(@RequestParam int user_id, @RequestParam int goal_id) {
+        return goalService.getRestAmount(user_id, goal_id);
     }
 }
 //일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

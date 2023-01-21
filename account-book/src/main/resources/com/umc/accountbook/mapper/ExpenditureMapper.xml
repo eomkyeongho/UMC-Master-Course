@@ -5,7 +5,7 @@
     <select id="getExpenditures" parameterType="int" resultType="com.umc.accountbook.domain.Expenditure">
         SELECT *
         FROM EXPENDITURE
-        WHERE dc_id = ${dc_id}
+        WHERE history_id = ${history_id}
     </select>
 
     <insert id="createDailyExpenditure" parameterType="com.umc.accountbook.domain.Expenditure">

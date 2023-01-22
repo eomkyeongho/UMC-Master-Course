@@ -16,10 +16,12 @@ import java.util.Date;
 public class HistoryController {
     private final HistoryService historyService;
 
+
     @GetMapping ("/check")
-    public ResponseEntity<String> checkTodaySuccess(@RequestParam String date){
-        return ResponseEntity.ok(date);
+    public ResponseEntity<String> getTodaySuccess(@RequestParam String id, @RequestParam String date){
+        return ResponseEntity.ok(historyService.getTodaySuccess(id, date));
     }
+    //http://url/check?id=1&date=2023-01-01
 
     //   history/{user_id}?date=2023-01-19로 Get 테스트 완료 했습니다!
     @GetMapping("/{user_id}")
@@ -36,4 +38,6 @@ public class HistoryController {
 
         return savingAmount;
     }
+
+
 }

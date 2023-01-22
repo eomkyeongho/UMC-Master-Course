@@ -11,6 +11,8 @@ import java.util.List;
 public interface HistoryMapper {
     History getHistory(@Param("user_id") int user_id, @Param("date") Date date);
 
-    void checkTodaySuccess (History history);
+    void getTodaySuccess (History history);
     List<History> getHistory(int user_id);
+    List<History> getTodaySuccess(String user_id, String date);
+
 }

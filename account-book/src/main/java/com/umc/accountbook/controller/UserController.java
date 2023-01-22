@@ -15,7 +15,9 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/kakao")
-    public void kakaoCallback(@RequestParam String code) {
+    public void kakaoCallback(@RequestParam String code) throws Exception {
         kakaoService.getKakaoAccessToken(code);
     }
 }
+
+// kauth.kakao.com/oauth/authorize?client_id=384deba2f1d57379b3de4dfccb3ee740&redirect_uri=http://localhost:8081/user/kakao&response_type=code

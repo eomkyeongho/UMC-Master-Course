@@ -12,8 +12,8 @@ import java.util.List;
 public class ExpenditureService {
     private final ExpenditureMapper expenditureMapper;
 
-    public List<Expenditure> getExpenditures(int dc_id) {
-        return expenditureMapper.getExpenditures(dc_id);
+    public List<Expenditure> getExpenditures(int history_id) {
+        return expenditureMapper.getExpenditures(history_id);
     }
 
     public void createDailyExpenditure(Expenditure expenditure) {

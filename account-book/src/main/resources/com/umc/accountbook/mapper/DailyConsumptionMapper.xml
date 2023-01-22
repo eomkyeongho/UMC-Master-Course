@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.umc.accountbook.mapper.HistoryMapper">
-    <select id="getHistory" resultType="com.umc.accountbook.domain.History">
-        SELECT *
-        FROM HISTORY
-        WHERE USER_ID=#{user_id} and DATE=#{date}
+<mapper namespace="com.umc.accountbook.mapper.DailyConsumptionMapper">
+    <select id="getDailyConsumption" parameterType="String" resultType="com.umc.accountbook.domain.DailyConsumption">
+        select * from
+            history
+        where user_id = #{user_id}
+        and date = #{date}
     </select>
-
     <select id="getTodaySuccess" parameterType="String" resultType="com.umc.accountbook.domain.DailyConsumption">
         select * from
             history
         where user_id = #{user_id}
           and date = #{date}
-          and history.DAILY_AVAIL_AMOUNT - history.SPENDING <![CDATA[<]]> 0
+            and history.DAILY_AVAIL_AMOUNT - history.SPENDING <![CDATA[<]]> 0
     </select>
+
+
 </mapper>

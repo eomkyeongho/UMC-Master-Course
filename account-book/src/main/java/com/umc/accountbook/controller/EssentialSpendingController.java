@@ -16,9 +16,10 @@ import java.util.List;
 public class EssentialSpendingController {
     private final EssentialSpendingService essentialSpendingService;
 
-    @GetMapping("/{goal_id}")
-    public List<EssentialSpending> getEssensialSpending(@PathVariable int goal_id) {
-        List<EssentialSpending> essentialSpendingList = essentialSpendingService.getEssentialSpending(goal_id);
+
+    @GetMapping("/essential-spending-list")
+    public List<EssentialSpending> getEssentialSpending(@RequestParam int essential_spending_id, @RequestParam int goal_id) {
+        List<EssentialSpending> essentialSpendingList = essentialSpendingService.getEssentialSpending(essential_spending_id,goal_id);
 
         return essentialSpendingList;
     }

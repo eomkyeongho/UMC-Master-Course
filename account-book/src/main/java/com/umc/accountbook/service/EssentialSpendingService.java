@@ -16,8 +16,8 @@ public class EssentialSpendingService {
 
     private final EssentialSpendingMapper essentialSpendingMapper;
 
-    public List<EssentialSpending> getEssentialSpending(int goal_id) {
-        return essentialSpendingMapper.getEssentialSpending(goal_id);
+    public List<EssentialSpending> getEssentialSpending(int essential_spending_id,int goal_id) {
+        return essentialSpendingMapper.getEssentialSpending(essential_spending_id,goal_id);
     }
 
     public void createEssentialSpending(int goal_id, Long icon, String content, Long cost){

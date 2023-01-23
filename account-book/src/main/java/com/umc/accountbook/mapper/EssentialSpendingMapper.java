@@ -1,6 +1,5 @@
 package com.umc.accountbook.mapper;
 
-import com.umc.accountbook.domain.DailyConsumption;
 import com.umc.accountbook.domain.EssentialSpending;
 import com.umc.accountbook.domain.Expenditure;
 import com.umc.accountbook.dto.CreateEssentialSpendingRequestDto;

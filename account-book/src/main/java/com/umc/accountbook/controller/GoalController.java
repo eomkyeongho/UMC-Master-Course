@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,5 +37,10 @@ public class GoalController {
     public Long getRestAmount(@RequestParam int user_id, @RequestParam int goal_id) {
         return goalService.getRestAmount(user_id, goal_id);
     }
+
+//    @GetMapping("/progress-bar")
+//    public Map<String, Object> getProgressBar(@RequestParam int user_id) {
+//        return
+//    }
 }
 //일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

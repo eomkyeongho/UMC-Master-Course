@@ -10,7 +10,7 @@
 
     <insert id="createEssentialSpending" parameterType="com.umc.accountbook.domain.EssentialSpending">
         INSERT INTO
-            ESSENTIAL_SPENDING(goal_id, ICON, CONTENT, COST)
+        ESSENTIAL_SPENDING(goal_id, ICON, CONTENT, COST)
         VALUES(#{goal_id}, #{icon}, #{content}, #{cost})
     </insert>
 </mapper>

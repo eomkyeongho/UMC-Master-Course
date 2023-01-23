@@ -15,3 +15,5 @@ public class History {
     private Long spending;
     private Date date;
 }
+
+

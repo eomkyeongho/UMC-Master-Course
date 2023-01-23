@@ -1,6 +1,8 @@
 package com.umc.accountbook.controller;
 
 import com.umc.accountbook.domain.EssentialSpending;
+import com.umc.accountbook.domain.Expenditure;
+import com.umc.accountbook.domain.Goal;
 import com.umc.accountbook.service.GoalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class GoalController {
     private final GoalService goalService;
 
+    @PostMapping("")
+    public String createGoal(@RequestBody Goal goal) {
+        goalService.createGoal(goal);
+
+        return "Goal is created";
+    }
 
     @GetMapping("/daily-avail-amount")
     public Long getDailyAvailAmount(@RequestParam int goal_id, @RequestParam int user_id) {
@@ -24,8 +32,8 @@ public class GoalController {
   }
     
     @GetMapping("/rest-amount")
-    public Long getRestAmount(@RequestParam int goal_id, @RequestParam int user_id) {
-        return goalService.getRestAmount(goal_id, user_id);
+    public Long getRestAmount(@RequestParam int user_id, @RequestParam int goal_id) {
+        return goalService.getRestAmount(user_id, goal_id);
     }
 }
 //일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

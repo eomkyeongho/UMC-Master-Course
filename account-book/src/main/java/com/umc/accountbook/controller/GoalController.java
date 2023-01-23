@@ -38,9 +38,9 @@ public class GoalController {
         return goalService.getRestAmount(user_id, goal_id);
     }
 
-//    @GetMapping("/progress-bar")
-//    public Map<String, Object> getProgressBar(@RequestParam int user_id) {
-//        return
-//    }
+    @GetMapping("/progress-bar")
+    public Map<String, Object> getProgressBar(@RequestParam int user_id) {
+        return goalService.getProgressBar(user_id);
+    }
 }
 //일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

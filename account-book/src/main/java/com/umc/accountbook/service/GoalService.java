@@ -5,6 +5,8 @@ import com.umc.accountbook.mapper.GoalMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class GoalService {
@@ -19,5 +21,9 @@ public class GoalService {
     }
     public Long getRestAmount(int user_id, int goal_id) {
         return goalMapper.getRestAmount(user_id, goal_id);
+    }
+
+    public Map<String, Object> getProgressBar(int user_id) {
+        return goalMapper.getProgressBar(user_id);
     }
 }

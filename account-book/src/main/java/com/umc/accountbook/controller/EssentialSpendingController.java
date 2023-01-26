@@ -20,7 +20,6 @@ public class EssentialSpendingController {
     @GetMapping("/essential-spending-list")
     public List<EssentialSpending> getEssentialSpending(@RequestParam int essential_spending_id, @RequestParam int goal_id) {
         List<EssentialSpending> essentialSpendingList = essentialSpendingService.getEssentialSpending(essential_spending_id,goal_id);
-
         return essentialSpendingList;
     }
 

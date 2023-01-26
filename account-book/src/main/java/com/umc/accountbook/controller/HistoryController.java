@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 @RequestMapping("history")
 public class HistoryController {
     private final HistoryService historyService;
+    private final HttpSession httpSession;
 
 
     @GetMapping ("/check")

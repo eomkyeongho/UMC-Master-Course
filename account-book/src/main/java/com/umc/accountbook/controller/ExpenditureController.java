@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping("expenditure")
 public class ExpenditureController {
     private final ExpenditureService expenditureService;
+    private final HttpSession httpSession;
 
     @GetMapping("/expenditures")
     public List<Expenditure> getExpenditures(@RequestParam int history_id) {

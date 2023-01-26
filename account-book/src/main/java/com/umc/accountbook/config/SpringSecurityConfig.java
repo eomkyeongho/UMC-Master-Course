@@ -23,7 +23,7 @@ public class SpringSecurityConfig {
                 .antMatchers("/expenditure/**").hasRole(Role.USER.name())
                 .antMatchers("/history/**").hasRole(Role.USER.name())
                 .antMatchers("/user/**").hasRole(Role.USER.name())
-                .antMatchers("/essential-consumption/**").hasRole(Role.USER.name())
+                .antMatchers("/essential-spending/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated().and()
                 .logout().logoutSuccessUrl("/").and()
                 .oauth2Login()

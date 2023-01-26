@@ -24,9 +24,7 @@ public class ExpenditureController {
     }
 
     @PostMapping("")
-    public String createDailyExpenditure(@RequestBody Expenditure expenditure) {
+    public void createDailyExpenditure(@RequestBody Expenditure expenditure) {
         expenditureService.createDailyExpenditure(expenditure);
-
-        return "Daily expenditure is created";
     }
 }

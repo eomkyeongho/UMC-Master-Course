@@ -28,12 +28,10 @@ public class GoalController {
     private final HttpSession httpSession;
 
     @PostMapping("")
-    public String createGoal(@RequestBody Goal goal) {
-        SessionUser user_id = (SessionUser) httpSession.getAttribute("user_id");
-        System.out.println("user_id = " + user_id);
+    public void createGoal(@RequestBody Goal goal) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        goal.setUser_id(user.getUser_id());
         goalService.createGoal(goal);
-
-        return "Goal is created";
     }
 
     @GetMapping("/daily-avail-amount")

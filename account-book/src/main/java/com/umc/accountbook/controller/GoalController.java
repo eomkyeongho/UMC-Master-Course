@@ -42,7 +42,7 @@ public class GoalController {
         return goalService.getDailyAvailAmount(goal_id, user.getUser_id());
     }
 
-    @GetMapping("recent")
+    @GetMapping("/recent")
     public Goal getRecentGoal() {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         return goalService.getRecentGoal(user.getUser_id());

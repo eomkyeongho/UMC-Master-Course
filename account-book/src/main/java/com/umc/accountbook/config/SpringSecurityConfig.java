@@ -19,8 +19,11 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/profile").permitAll()
-                .antMatchers("/api/**").hasRole(Role.USER.name())
+                .antMatchers("/goal/**").hasRole(Role.USER.name())
+                .antMatchers("/expenditure/**").hasRole(Role.USER.name())
+                .antMatchers("/history/**").hasRole(Role.USER.name())
+                .antMatchers("/user/**").hasRole(Role.USER.name())
+                .antMatchers("/essential-consumption/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated().and()
                 .logout().logoutSuccessUrl("/").and()
                 .oauth2Login()

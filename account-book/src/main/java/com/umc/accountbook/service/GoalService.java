@@ -26,4 +26,8 @@ public class GoalService {
     public Map<String, Object> getProgressBar(int user_id) {
         return goalMapper.getProgressBar(user_id);
     }
+
+    public Goal getRecentGoal(int user_id) {
+        return goalMapper.getRecentGoal(user_id);
+    }
 }

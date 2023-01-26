@@ -11,5 +11,7 @@ public interface GoalMapper {
     long getDailyAvailAmount(int goal_id, int user_id);
     long getRestAmount(int user_id, int goal_id);
 
+    Goal getRecentGoal(int user_id);
+
     Map<String, Object> getProgressBar(int user_id);
 }

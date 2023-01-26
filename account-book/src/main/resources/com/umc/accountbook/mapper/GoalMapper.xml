@@ -22,7 +22,14 @@
 
     <select id="getProgressBar" parameterType="int" resultType="map">
         select rest_amount, target_amount
-        from goal where user_id=1
+        from goal where user_id=#{user_id}
+        order by PERIOD_START desc
+        limit 1
+    </select>
+
+    <select id="getRecentGoal" parameterType="int" resultType="com.umc.accountbook.domain.Goal">
+        select *
+        from goal where user_id=#{user_id}
         order by PERIOD_START desc
         limit 1
     </select>

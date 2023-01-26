@@ -1,14 +1,13 @@
 package com.umc.accountbook.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import com.umc.accountbook.role.Role;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter @Entity
 public class User {
     @Id
@@ -17,10 +16,16 @@ public class User {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
-    private String name;
+    private String nickname;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role;
+    private Role role;
+
+    public User update(String nickname) {
+        this.nickname = nickname;
+
+        return this;
+    }
 
     public String getRoleKey() {
         return this.role.getKey();

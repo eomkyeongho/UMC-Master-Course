@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("essential-consumption")
 public class EssentialSpendingController {
     private final EssentialSpendingService essentialSpendingService;
+    private final HttpSession httpSession;
 
 
     @GetMapping("/essential-spending-list")
@@ -28,8 +30,4 @@ public class EssentialSpendingController {
     public void createEssentialSpending(@RequestBody CreateEssentialSpendingRequestDto requestDto){
         essentialSpendingService.createEssentialSpending(requestDto.getGoal_id(), requestDto.getIcon(), requestDto.getContent(), requestDto.getCost());
     }
-
-
-
-
 }

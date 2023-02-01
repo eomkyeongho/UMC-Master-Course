@@ -6,12 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class HistoryService {
     private final HistoryMapper historyMapper;
-
 
     public String getTodaySuccess(String id, String date) {
         if (historyMapper.getTodaySuccess(id, date).isEmpty())
@@ -23,6 +24,10 @@ public class HistoryService {
     }
     public History getHistory(int user_id, Date date){
         return historyMapper.getHistory(user_id, date);
+    }
+
+    public List<Map<String, Object>> getHistoryList(int user_id) {
+        return historyMapper.getHistoryList(user_id);
     }
     public Long getSavingAmount(int user_id, Date date) {
         History history = historyMapper.getHistory(user_id, date);

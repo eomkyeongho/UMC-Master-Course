@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,12 +22,11 @@ public class HistoryController {
     private final HttpSession httpSession;
 
 
-    @GetMapping ("/check")
-    public ResponseEntity<String> getTodaySuccess(@RequestParam String id, @RequestParam String date){
-        return ResponseEntity.ok(historyService.getTodaySuccess(id, date));
+    @GetMapping("/list")
+    public List<Map<String, Object>> getHistoryList() {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        return historyService.getHistoryList(3);
     }
-
-    @GetMapping("")
     public History getHistory(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         return historyService.getHistory(user.getUser_id(), date);

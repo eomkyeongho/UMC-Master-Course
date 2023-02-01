@@ -25,7 +25,7 @@ public class HistoryController {
     @GetMapping("/list")
     public List<Map<String, Object>> getHistoryList() {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return historyService.getHistoryList(3);
+        return historyService.getHistoryList(user.getUser_id());
     }
     public History getHistory(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
         SessionUser user = (SessionUser) httpSession.getAttribute("user");

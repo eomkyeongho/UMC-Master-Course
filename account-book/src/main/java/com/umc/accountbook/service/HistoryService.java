@@ -14,6 +14,7 @@ import java.util.Map;
 public class HistoryService {
     private final HistoryMapper historyMapper;
 
+
     public String getTodaySuccess(String id, String date) {
         if (historyMapper.getTodaySuccess(id, date).isEmpty())
         {
@@ -25,14 +26,14 @@ public class HistoryService {
     public History getHistory(int user_id, Date date){
         return historyMapper.getHistory(user_id, date);
     }
-
-    public List<Map<String, Object>> getHistoryList(int user_id) {
-        return historyMapper.getHistoryList(user_id);
-    }
     public Long getSavingAmount(int user_id, Date date) {
         History history = historyMapper.getHistory(user_id, date);
         Long savingAmount = history.getDaily_avail_amount() - history.getSpending();
 
         return (savingAmount > 0 ? savingAmount : 0);
+    }
+
+    public List<Map<String, Object>> getHistoryList(int user_id) {
+        return historyMapper.getHistoryList(user_id);
     }
 }

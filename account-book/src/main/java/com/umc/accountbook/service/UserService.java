@@ -1,17 +1,9 @@
 package com.umc.accountbook.service;
 
-import com.umc.accountbook.OAuth.OAuthAttributes;
 import com.umc.accountbook.domain.User;
-import com.umc.accountbook.dto.SessionUser;
-import com.umc.accountbook.repository.UserRepository;
+import com.umc.accountbook.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -19,37 +11,14 @@ import java.util.Collections;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
-    private final UserRepository userRepository;
+public class UserService {
+    private final UserMapper userMapper;
 
-    private final HttpSession httpSession;
-
-    @Override
-    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
-        OAuth2User oAuth2User = delegate.loadUser(userRequest);
-
-        String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
-                .getUserInfoEndpoint().getUserNameAttributeName();
-        // naver, kakao 로그인 구분
-        OAuthAttributes attributes = OAuthAttributes.of(registrationId, oAuth2User.getAttributes());
-
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
-
-        return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
-                attributes.getAttributes(),
-                attributes.getNameAttributeKey());
+    public void createUser(User user) {
+        userMapper.createUser(user);
     }
 
-
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getNickname()))
-                .orElse(attributes.toEntity());
-
-        return userRepository.save(user);
+    public User findUserByEmail(String email) {
+        return userMapper.findUserByEmail(email);
     }
 }

@@ -1,8 +1,9 @@
 package com.umc.accountbook.controller;
 
 import com.umc.accountbook.domain.History;
-import com.umc.accountbook.dto.SessionUser;
+import com.umc.accountbook.domain.User;
 import com.umc.accountbook.service.HistoryService;
+import com.umc.accountbook.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -19,25 +20,36 @@ import java.util.Map;
 @RequestMapping("history")
 public class HistoryController {
     private final HistoryService historyService;
+    private final UserService userService;
     private final HttpSession httpSession;
 
 
+    @GetMapping ("/check")
+    public ResponseEntity<String> getTodaySuccess(@RequestParam String id, @RequestParam String date){
+        return ResponseEntity.ok(historyService.getTodaySuccess(id, date));
+    }
+    //http://url/check?id=1&date=2023-01-01
+
+    //   history/{user_id}?date=2023-01-19로 Get 테스트 완료 했습니다!
+    @GetMapping("/{user_id}")
+    public History getDailyConsumption(@PathVariable int user_id, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
+        //test용
+        History history = historyService.getHistory(user_id, date);
+        //DailyConsumption dailyConsumption = dailyConsumptionService.getDailyConsumption(String.valueOf(user_id), formatter.format(date));
+        return history;
+    }
+
+    @GetMapping("/saving-amount/{user_id}")
+    public Long getSavingAmount(@PathVariable int user_id, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
+        Long savingAmount = historyService.getSavingAmount(user_id,date);
+
+        return savingAmount;
+    }
+
     @GetMapping("/list")
-    public List<Map<String, Object>> getHistoryList() {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    public List<Map<String, Object>> getHistoryList(){
+        String email = (String) httpSession.getAttribute("email");
+        User user = userService.findUserByEmail(email);
         return historyService.getHistoryList(user.getUser_id());
     }
-    public History getHistory(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return historyService.getHistory(user.getUser_id(), date);
-
-    }
-
-    @GetMapping("/saving-amount")
-    public Long getSavingAmount(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return historyService.getSavingAmount(user.getUser_id(),date);
-    }
-
-
 }

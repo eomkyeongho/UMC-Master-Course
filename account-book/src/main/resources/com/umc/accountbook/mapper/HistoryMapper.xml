@@ -17,11 +17,8 @@
     </select>
 
     <select id="getHistoryList" parameterType="int" resultType="map">
-        select history.history_id, history.date, (CASE WHEN history.MAX_AVAIL_AMOUNT >= history.SPENDING THEN 1 ELSE 0 END) AS success, goal.rest_amount - history.spending as rest_amount
-        from history history
-        right join goal goal
-        on history.user_id = goal.user_id
-        where history.user_id = 3
-        order by history.date
+        select history_id, (CASE WHEN (MAX_AVAIL_AMOUNT-SPENDING) > 0 THEN 1 ELSE 0 END) as 'success', date
+        from history
+        where user_id = #{user_id}
     </select>
 </mapper>

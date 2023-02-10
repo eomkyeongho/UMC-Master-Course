@@ -3,10 +3,9 @@ package com.umc.accountbook.controller;
 import com.umc.accountbook.domain.EssentialSpending;
 import com.umc.accountbook.domain.Expenditure;
 import com.umc.accountbook.domain.Goal;
-import com.umc.accountbook.dto.SessionUser;
+import com.umc.accountbook.domain.User;
 import com.umc.accountbook.service.GoalService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -28,34 +27,31 @@ public class GoalController {
     private final HttpSession httpSession;
 
     @PostMapping("")
-    public void createGoal(@RequestBody Goal goal) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        goal.setUser_id(user.getUser_id());
+    public String createGoal(@RequestBody Goal goal) {
         goalService.createGoal(goal);
+
+        return "Goal is created";
     }
 
     @GetMapping("/daily-avail-amount")
     public Long getDailyAvailAmount(@RequestParam int goal_id) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return goalService.getDailyAvailAmount(goal_id, user.getUser_id());
+        return goalService.getDailyAvailAmount(goal_id, 1);
     }
 
     @GetMapping("/recent")
     public Goal getRecentGoal() {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return goalService.getRecentGoal(user.getUser_id());
+        User sessionUser = (User)httpSession.getAttribute("User");
+        return goalService.getRecentGoal(1);
     }
     
     @GetMapping("/rest-amount")
     public Long getRestAmount(@RequestParam int goal_id) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return goalService.getRestAmount(user.getUser_id(), goal_id);
+        return goalService.getRestAmount(1, goal_id);
     }
 
     @GetMapping("/progress-bar")
     public Map<String, Object> getProgressBar() {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return goalService.getProgressBar(user.getUser_id());
+        return goalService.getProgressBar(1);
     }
 }
 //일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

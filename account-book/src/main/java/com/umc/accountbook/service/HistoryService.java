@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +31,9 @@ public class HistoryService {
         Long savingAmount = history.getDaily_avail_amount() - history.getSpending();
 
         return (savingAmount > 0 ? savingAmount : 0);
+    }
+
+    public List<Map<String, Object>> getHistoryList(int user_id) {
+        return historyMapper.getHistoryList(user_id);
     }
 }

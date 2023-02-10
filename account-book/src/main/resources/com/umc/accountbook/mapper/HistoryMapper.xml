@@ -15,4 +15,10 @@
           and date = #{date}
           and history.DAILY_AVAIL_AMOUNT - history.SPENDING <![CDATA[<]]> 0
     </select>
+
+    <select id="getHistoryList" parameterType="int" resultType="map">
+        select history_id, (CASE WHEN (MAX_AVAIL_AMOUNT-SPENDING) > 0 THEN 1 ELSE 0 END) as 'success', date
+        from history
+        where user_id = #{user_id}
+    </select>
 </mapper>

@@ -2,7 +2,6 @@ package com.umc.accountbook.service;
 
 import com.umc.accountbook.domain.EssentialSpending;
 import com.umc.accountbook.domain.Expenditure;
-import com.umc.accountbook.dto.CreateEssentialSpendingRequestDto;
 import com.umc.accountbook.mapper.EssentialSpendingMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

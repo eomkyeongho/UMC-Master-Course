@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface HistoryMapper {
@@ -14,5 +15,5 @@ public interface HistoryMapper {
     void getTodaySuccess (History history);
     List<History> getHistory(int user_id);
     List<History> getTodaySuccess(String user_id, String date);
-
+    List<Map<String, Object>> getHistoryList(int user_id);
 }

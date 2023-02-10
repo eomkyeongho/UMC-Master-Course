@@ -24,16 +24,6 @@ public class LoginController {
                         HttpServletRequest request) throws JsonProcessingException {
         HttpSession session = request.getSession();
 
-        // Session에 로그인 회원 데이터 보관
-        // DB에 존재하지 않는 회원 또는 탈퇴했던 회원인 경우에는 404 Error 응답
-        Member member = memberService.findByKakaoKey(kakaoKey);
-        if (member.getStatus() == MemberStatus.RESIGNED) {
-            throw new MemberNotFoundException();
-        }
-        User user = userService.findByNaverUser(email);
-        if (user.getStatus() == notMember) P
-
-        // 세션 바인딩
-        session.setAttribute(SessionConst.LOGIN_MEMBER, member.getId());
+        // test
     }
 }

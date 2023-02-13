@@ -35,8 +35,8 @@ public class UserController {
                 userService.createUser(user);
             }
             httpSession.setAttribute("email", email);
+            userStatus = userService.isNoGoal(user.getUserId());
         }
-        userStatus = userService.isNoGoal(user.user_id);
         return userStatus;
     }
 

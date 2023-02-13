@@ -13,4 +13,10 @@
         FROM USER
         WHERE EMAIL = #{email}
     </select>
+
+    <select id="isNoGoal" resultType="String">
+        SELECT memo
+        FROM Goal
+        where user_id = #{user_id}
+    </select>
 </mapper>

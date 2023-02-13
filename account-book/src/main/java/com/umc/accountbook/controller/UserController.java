@@ -21,10 +21,11 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(@RequestParam String email, @RequestParam String name) {
+        String userStatus = "";
         String sessionEmail = (String) httpSession.getAttribute("email");
 
         // 세션에 회원 이메일이 없다면 (로그인중이 아니라면)
-        if(sessionEmail == null) {
+        if (sessionEmail == null) {
             User user = userService.findUserByEmail(email);
 
             // 가입한 회원이 아니라면
@@ -35,11 +36,12 @@ public class UserController {
                 userService.createUser(user);
             }
             httpSession.setAttribute("email", email);
+            userStatus = userService.isNoGoal(user.getUserId());
         }
-
         // 세션에 회원 데이터가 있으면 로그인 (로그인중이라면)
-        return "login";
+        return userStatus;
     }
+
 
     @PostMapping("/logout")
     public String logout(HttpServletRequest request){

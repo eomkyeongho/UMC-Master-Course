@@ -21,4 +21,11 @@ public class UserService {
     public User findUserByEmail(String email) {
         return userMapper.findUserByEmail(email);
     }
+
+    public String isNoGoal(int user_id) {
+        if (userMapper.isNoGoal(user_id) == null) {
+            return "no goal"
+        }
+        return "exist";
+    }
 }

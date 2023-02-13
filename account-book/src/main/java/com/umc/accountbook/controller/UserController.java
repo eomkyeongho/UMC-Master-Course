@@ -22,6 +22,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(@RequestParam String email, @RequestParam String name) {
+        String userStatus = "";
         String sessionEmail = (String) httpSession.getAttribute("email");
 
         if(sessionEmail == null) {
@@ -35,8 +36,8 @@ public class UserController {
             }
             httpSession.setAttribute("email", email);
         }
-
-        return "login";
+        userStatus = userService.isNoGoal(user.user_id);
+        return userStatus;
     }
 
     @GetMapping("/test")

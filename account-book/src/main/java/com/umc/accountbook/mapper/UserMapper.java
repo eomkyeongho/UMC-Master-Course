@@ -8,4 +8,6 @@ public interface UserMapper {
     void createUser(User user);
 
     User findUserByEmail(String email);
+
+    String isNoGoal(int user_id);
 }

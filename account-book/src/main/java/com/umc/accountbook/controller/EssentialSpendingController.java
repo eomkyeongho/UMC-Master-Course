@@ -23,4 +23,11 @@ public class EssentialSpendingController {
         List<EssentialSpending> essentialSpendingList = essentialSpendingService.getEssentialSpending(essential_spending_id,goal_id);
         return essentialSpendingList;
     }
+
+    @PostMapping("")
+    public String createEssentialSpending(@RequestParam int goal_id, @RequestParam Long icon, @RequestParam String content, @RequestParam Long cost){
+        essentialSpendingService.createEssentialSpending(goal_id, icon, content, cost);
+
+        return "Essential Spending created";
+    }
 }

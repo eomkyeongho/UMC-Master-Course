@@ -5,6 +5,7 @@ import com.umc.accountbook.domain.Expenditure;
 import com.umc.accountbook.domain.Goal;
 import com.umc.accountbook.domain.User;
 import com.umc.accountbook.service.GoalService;
+import com.umc.accountbook.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("goal")
 public class GoalController {
     private final GoalService goalService;
-
+    private final UserService userService;
     private final HttpSession httpSession;
 
     @PostMapping("")
@@ -51,7 +52,13 @@ public class GoalController {
 
     @GetMapping("/progress-bar")
     public Map<String, Object> getProgressBar() {
-        return goalService.getProgressBar(1);
+        String sessionEmail = (String) httpSession.getAttribute("email");
+
+        if(sessionEmail == null) {
+            // error 로그인이 되어있지 않습니다.
+        }
+        User user = userService.findUserByEmail(sessionEmail);
+        return goalService.getProgressBar(user.getUserId());
     }
 }
 //일자, 내 사용자 id-> 하루 목표 - 하루 소비 < 0 실패

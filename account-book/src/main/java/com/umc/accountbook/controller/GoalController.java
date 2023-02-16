@@ -29,6 +29,9 @@ public class GoalController {
 
     @PostMapping("")
     public String createGoal(@RequestBody Goal goal) {
+        String sessionEmail = (String) httpSession.getAttribute("email");
+        User sessionUser = userService.findUserByEmail(sessionEmail);
+        goal.setUser_id(sessionUser.getUserId());
         goalService.createGoal(goal);
 
         return "Goal is created";

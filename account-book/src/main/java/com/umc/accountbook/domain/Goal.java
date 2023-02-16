@@ -18,4 +18,5 @@ public class Goal {
     private Long monthly_income;
     private Long daily_avail_amount;
     private Long rest_amount;
+    private Long essential_amount;
 }

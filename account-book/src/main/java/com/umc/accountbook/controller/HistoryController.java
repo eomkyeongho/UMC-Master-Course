@@ -31,17 +31,20 @@ public class HistoryController {
     //http://url/check?id=1&date=2023-01-01
 
     //   history/{user_id}?date=2023-01-19로 Get 테스트 완료 했습니다!
-    @GetMapping("/{user_id}")
-    public History getDailyConsumption(@PathVariable int user_id, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
+    @GetMapping("/")
+    public History getHistory(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
+        String sessionEmail = (String) httpSession.getAttribute("email");
+        User sessionUser = userService.findUserByEmail(sessionEmail);
         //test용
-        History history = historyService.getHistory(user_id, date);
-        //DailyConsumption dailyConsumption = dailyConsumptionService.getDailyConsumption(String.valueOf(user_id), formatter.format(date));
+        History history = historyService.getHistory(sessionUser.getUserId(), date);
         return history;
     }
 
     @GetMapping("/saving-amount/{user_id}")
-    public Long getSavingAmount(@PathVariable int user_id, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
-        Long savingAmount = historyService.getSavingAmount(user_id,date);
+    public Long getSavingAmount(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date){
+        String sessionEmail = (String) httpSession.getAttribute("email");
+        User sessionUser = userService.findUserByEmail(sessionEmail);
+        Long savingAmount = historyService.getSavingAmount(sessionUser.getUserId(),date);
 
         return savingAmount;
     }

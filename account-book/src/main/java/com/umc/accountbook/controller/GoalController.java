@@ -39,18 +39,22 @@ public class GoalController {
 
     @GetMapping("/daily-avail-amount")
     public Long getDailyAvailAmount(@RequestParam int goal_id) {
-        return goalService.getDailyAvailAmount(goal_id, 1);
+        String sessionEmail = (String) httpSession.getAttribute("email");
+        User sessionUser = userService.findUserByEmail(sessionEmail);
+        return goalService.getDailyAvailAmount(goal_id, sessionUser.getUserId());
     }
 
     @GetMapping("/recent")
     public Goal getRecentGoal() {
         User sessionUser = (User)httpSession.getAttribute("User");
-        return goalService.getRecentGoal(1);
+        return goalService.getRecentGoal(sessionUser.getUserId());
     }
     
     @GetMapping("/rest-amount")
     public Long getRestAmount(@RequestParam int goal_id) {
-        return goalService.getRestAmount(1, goal_id);
+        String sessionEmail = (String) httpSession.getAttribute("email");
+        User sessionUser = userService.findUserByEmail(sessionEmail);
+        return goalService.getRestAmount(sessionUser.getUserId(), goal_id);
     }
 
     @GetMapping("/progress-bar")

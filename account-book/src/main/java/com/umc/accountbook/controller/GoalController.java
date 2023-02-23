@@ -46,7 +46,8 @@ public class GoalController {
 
     @GetMapping("/recent")
     public Goal getRecentGoal() {
-        User sessionUser = (User)httpSession.getAttribute("User");
+        String sessionEmail = (String) httpSession.getAttribute("email");
+        User sessionUser = userService.findUserByEmail(sessionEmail);
         return goalService.getRecentGoal(sessionUser.getUserId());
     }
     
